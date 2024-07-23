@@ -63,7 +63,9 @@ def get_summary(data_source):
         "booked_amount": sum(item["booked_amount"] for item in data_source),
         "actual_amount": sum(item["actual_amount"] for item in data_source),
         "adjustment": sum(item["adjustment"] for item in data_source),
-        "recorded_amount": sum(item["booked_amount"] + item["adjustment"] for item in data_source),
+        "recorded_amount": sum(
+            item["booked_amount"] + item["adjustment"] for item in data_source
+        ),
     }
 
 
@@ -108,10 +110,12 @@ class InvoiceData(LineItemData):
     end_date: datetime.date
     invoice_date: datetime.date
 
+
 class InvoiceModel(BaseModel):
     data: List[InvoiceData]
     count: int
     summary: Optional[ReportingData] = {}
+
 
 @app.get("/campaign", tags=["campaign"])
 async def get_campaign(campaign_id: List[int] = Query(None)) -> CampaignModel:
@@ -195,7 +199,7 @@ async def update_line_item(line_item_id: int, adjustment: float) -> LineItemMode
 @app.get("/invoice", tags=["line_item"])
 async def create_invoice(
     campaign_id: List[int] = Query(None), line_item_id: List[int] = Query(None)
-): # -> InvoiceModel:
+):  # -> InvoiceModel:
     """
     Generate the data needed for an invoice report
     """
@@ -209,12 +213,15 @@ async def create_invoice(
     last_day = datetime.date(today.year, today.month, num_days)
 
     data = await get_line_item(line_item_id=line_item_id, campaign_id=campaign_id)
-    data = [{
-        "start_date": first_day,
-        "end_date": last_day,
-        "invoice_date": today,
-        **line_data.dict(),
-    } for line_data in data.data]
+    data = [
+        {
+            "start_date": first_day,
+            "end_date": last_day,
+            "invoice_date": today,
+            **line_data.dict(),
+        }
+        for line_data in data.data
+    ]
     return InvoiceModel(
         data=data or [],
         summary=get_summary(data),
