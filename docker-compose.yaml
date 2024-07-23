@@ -1,0 +1,43 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    entrypoint:
+      - fastapi
+      - dev
+      - main.py
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8000"
+      - "--reload"
+    volumes:
+      - ./api:/api
+      - ./database:/database
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+  database:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    volumes:
+      - ./database:/database
+#  web:
+#    build:
+#      context: ./web
+#      dockerfile: Dockerfile
+#    entrypoint:
+#      - npm
+#      - run
+#      - start
+#    volumes:
+#      - ./web:/web
+#    expose:
+#      - 3000
+#    ports:
+#      - "3000:3000"
