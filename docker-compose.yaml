@@ -27,17 +27,16 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./database:/database
-#  web:
-#    build:
-#      context: ./web
-#      dockerfile: Dockerfile
-#    entrypoint:
-#      - npm
-#      - run
-#      - start
-#    volumes:
-#      - ./web:/web
-#    expose:
-#      - 3000
-#    ports:
-#      - "3000:3000"
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    volumes:
+      - ./web:/web
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+      - database
