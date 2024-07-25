@@ -73,7 +73,7 @@ export const BookedVsActualChart = ({ data }: { data: Summary }) => {
         showXAxisLablesTooltip={true}
         wrapXAxisLables={true}
         barWidth={"auto"}
-        maxBarWidth={"300"}
+        maxBarWidth={300}
       />
     </div>
   );

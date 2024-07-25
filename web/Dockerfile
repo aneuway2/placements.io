@@ -1,11 +1,13 @@
-FROM node:20.11.1-alpine3.19 AS build
+FROM node:22-alpine AS build
 
+RUN apk add gcompat
 WORKDIR /web
-COPY package.json ./
-RUN yarn install
-ENV PATH /web/node_modules/.bin:$PATH
 COPY . .
-RUN yarn run build
+RUN npm install typescript vite --global
+RUN yarn install
+RUN yarn global add vite typescript
+RUN yarn run vite:build
+ENTRYPOINT ["yarn", "run", "start"]
 
 FROM nginx:1.25.4-alpine3.18
 

@@ -23,8 +23,6 @@ It includes components for managing and displaying data, such as line item adjus
 | React Query           | Used to connect to the backend API                                                                                                                                                           |
 | FluentUI              | Used for standardized elements and graphing capabilities                                                                                                                                     |
 | Prettier / Black      | Used for standardization of code across frontend and backend                                                                                                                                 |
-|                       |                                                                                                                                                                                              |
-|                       |                                                                                                                                                                                              |
 
 ## Challenge Objectives
 
@@ -61,7 +59,7 @@ It includes components for managing and displaying data, such as line item adjus
 - [ ] A commenting system for appropriate objects in the app (eg a user might leave
       instructions on a campaign for another user by tagging them in a comment)
 - [x] A feature you think is interesting and can show off your skill set
-  - This was the first time that I've created an frontend application using Vite. There were some initial challenges with the setup and configuration.
+  - I'm a proponent of using solutions for APIs that auto-document themselves, and I'm fully behind solutions that implement the Open API Specification to do that. Go to http://localhost:8000/ to see the auto-generated API documentation with the ability to run requests and see responses.
 
 ## Getting Started
 
@@ -81,7 +79,9 @@ The api frontend currently doesnt support hot reloading. To develop the frontend
 
 1. `cd web`
 2. `yarn run dev`
+3. Open the web app: http://localhost:5173/
 
 ## Viewing the Application
-* [Web App](http://localhost:5173/)
-* [API Documentation](http://localhost:8000/)
+
+- [Web App (Port 3000)](http://localhost:3000/)
+- [API Documentation (Port 8000)](http://localhost:8000/)

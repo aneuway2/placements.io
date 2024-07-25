@@ -16,8 +16,10 @@ const useStyles = makeStyles({
 });
 
 interface SummaryData {
-  total: number;
-  details: string[];
+  booked_amount: number;
+  actual_amount: number;
+  adjustment: number;
+  recorded_amount: number;
 }
 
 interface MetricsData {

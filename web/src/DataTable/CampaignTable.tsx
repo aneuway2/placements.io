@@ -49,7 +49,7 @@ const columns: TableColumnDefinition<Item>[] = [
     renderHeaderCell: () => "Booked",
     renderCell: (item: Item) => {
       return (
-        <span title={item.booked_amount}>
+        <span title={item.booked_amount.toString()}>
           {formatCurrency(Number(item.booked_amount.toFixed(2)))}
         </span>
       );
@@ -63,7 +63,7 @@ const columns: TableColumnDefinition<Item>[] = [
     renderHeaderCell: () => "Actual",
     renderCell: (item: Item) => {
       return (
-        <span title={item.actual_amount}>
+        <span title={item.actual_amount.toString()}>
           {formatCurrency(Number(item.actual_amount.toFixed(2)))}
         </span>
       );
@@ -79,7 +79,7 @@ const columns: TableColumnDefinition<Item>[] = [
       const style = DataTableStyles();
       return (
         <span
-          title={item.adjustment}
+          title={item.adjustment.toString()}
           className={item.adjustment < 0 ? style.negativeNumber : ""}
         >
           {formatCurrency(Number(item.adjustment.toFixed(2)))}
@@ -97,7 +97,7 @@ const columns: TableColumnDefinition<Item>[] = [
       const style = DataTableStyles();
       return (
         <span
-          title={item.recorded_amount}
+          title={item.recorded_amount.toString()}
           className={item.recorded_amount < 0 ? style.negativeNumber : ""}
         >
           {formatCurrency(Number(item.recorded_amount.toFixed(2)))}
