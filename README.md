@@ -120,7 +120,9 @@ I also added some FluentUI Skeletons for the loading states since that seemed mo
 
 Overall, I spent a lot of time on this project, but it was a labor of love, and I like the way that it came out over the past two days.
 
-
+![website screenshot](doc%2Fwebsite.png)
+![api website screenshot](doc%2Fapi.png)
+[Visual Demo]((doc%2Fdemo.gif)
 
 
 ## Getting Started
