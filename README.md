@@ -122,8 +122,7 @@ Overall, I spent a lot of time on this project, but it was a labor of love, and 
 
 ![website screenshot](doc%2Fwebsite.png)
 ![api website screenshot](doc%2Fapi.png)
-[Visual Demo]((doc%2Fdemo.gif)
-
+![demo.gif](doc%2Fdemo.gif)
 
 ## Getting Started
 
