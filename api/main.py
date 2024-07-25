@@ -3,6 +3,7 @@ import json
 import datetime
 import calendar
 from fastapi import FastAPI, Query, Depends, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 
@@ -15,6 +16,15 @@ app = FastAPI(
         "url": "https://www.linkedin.com/in/gabow/",
     },
     docs_url="/",
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
 )
 
 
