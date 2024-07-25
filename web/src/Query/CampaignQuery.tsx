@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { CampaignTable, Item } from "../DataTable/CampaignTable.tsx";
+import { CampaignTable } from "../DataTable/CampaignTable.tsx";
 import { Metrics } from "../Metrics/Metrics.tsx";
 import { CampaignTile } from "../Metrics/CampaignTile.tsx";
 import { ObjectTitleBar } from "../ObjectTitleBar/ObjectTitleBar.tsx";
 import { DocumentFolder20Filled } from "@fluentui/react-icons";
+import { SkeletonLoader } from "./SkeletonLoader.tsx";
+import { ErrorLoader } from "./ErrorLoader.tsx";
 
 export const CampaignQuery = () => {
   const { isPending, error, data, isFetching } = useQuery({
@@ -18,12 +20,9 @@ export const CampaignQuery = () => {
     refetchOnMount: false,
   });
 
-  if (isPending) return "Loading...";
-
-  if (error) return "An error has occurred: " + error.message;
-
-  if (isFetching) return "Fetching...";
-
+  if (isPending) return <SkeletonLoader />;
+  if (error) return <ErrorLoader error={error?.message} />;
+  if (isFetching) return <SkeletonLoader />;
   return (
     <>
       <ObjectTitleBar Icon={<DocumentFolder20Filled />} label={"Campaigns"} />

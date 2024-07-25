@@ -1,6 +1,9 @@
 import { useTileStyles } from "./tileStyles";
 
-export const CampaignTile = ({ data }: { data: any }) => {
+interface CampaignData {
+  count: number;
+}
+export const CampaignTile = ({ data }: { data: CampaignData }) => {
   const style = useTileStyles();
   return (
     <div className={style.tile}>

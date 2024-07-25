@@ -1,20 +1,17 @@
 import { useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { LineItemTable, Item } from "../DataTable/LineItemTable.tsx";
 import { Metrics } from "../Metrics/Metrics.tsx";
 import { LineItemDetailTile } from "../Metrics/LineItemDetailTile.tsx";
 import { ObjectTitleBar } from "../ObjectTitleBar/ObjectTitleBar.tsx";
 import { DocumentFolder20Filled, Album20Filled } from "@fluentui/react-icons";
 
 export const LineItemDetailQuery = () => {
-  const [match, params] = useRoute(
-    "/campaign/:campaign_id/line-item/:line_item_id"
-  );
+  const [, params] = useRoute("/campaign/:campaign_id/line-item/:line_item_id");
   const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ["lineItem"],
+    queryKey: ["lineItemDetail"],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:8000/line_item?campaign_id=${params.campaign_id}&line_item_id=${params.line_item_id}`
+        `http://localhost:8000/line_item?campaign_id=${params?.campaign_id}&line_item_id=${params?.line_item_id}`
       );
       const response_data = await response.json();
       return response_data;
@@ -41,12 +38,7 @@ export const LineItemDetailQuery = () => {
         label={data.data[0].name}
         identifer={data.data[0].id}
       />
-      <Metrics
-        data={data}
-        TileComponent={(data) => {
-          return <></>;
-        }}
-      />
+      <Metrics data={data} TileComponent={LineItemDetailTile} />
     </>
   );
 };

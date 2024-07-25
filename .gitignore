@@ -1,6 +1,8 @@
 # Compiled source #
 ###################
-database/database.db
+/database/database.db
+/**/*.pyc
+/**/__pycache__/
 
 # OS generated files #
 ######################

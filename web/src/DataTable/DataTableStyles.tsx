@@ -1,6 +1,6 @@
 import { makeStyles } from "@fluentui/react-components";
 
-export const useDataTableStyles = makeStyles({
+export const DataTableStyles = makeStyles({
   dataTable: {
     padding: "0px 10px",
   },

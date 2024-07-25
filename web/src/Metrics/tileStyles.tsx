@@ -20,4 +20,24 @@ export const useTileStyles = makeStyles({
     fontSize: "94px",
     fontWeight: "bold",
   },
+  field: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "2px",
+    width: "100%",
+    maxWidth: "400px",
+    "& button": {
+      marginTop: "16px",
+    },
+  },
+  statusMessage: {
+    height: "20px",
+    marginTop: "20px",
+    textAlign: "center",
+  },
+  separator: {
+    height: "1px",
+    width: "450px",
+    backgroundColor: "#605f5f",
+  },
 });

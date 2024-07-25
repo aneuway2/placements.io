@@ -1,13 +1,13 @@
 import { useRoute } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { LineItemTable, Item } from "../DataTable/LineItemTable.tsx";
+import { LineItemTable } from "../DataTable/LineItemTable.tsx";
 import { Metrics } from "../Metrics/Metrics.tsx";
 import { LineItemTile } from "../Metrics/LineItemTile.tsx";
 import { ObjectTitleBar } from "../ObjectTitleBar/ObjectTitleBar.tsx";
 import { DocumentFolder20Filled } from "@fluentui/react-icons";
 
 export const LineItemQuery = () => {
-  const [match, params] = useRoute("/campaign/:campaign_id");
+  const [, params] = useRoute("/campaign/:campaign_id");
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ["lineItem"],
     queryFn: async () => {

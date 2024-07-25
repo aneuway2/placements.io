@@ -9,7 +9,7 @@ import {
   DataGridCell,
 } from "@fluentui/react-components";
 import { Link } from "wouter";
-import { useDataTableStyles } from "./dataTableStyles";
+import { DataTableStyles } from "./DataTableStyles.tsx";
 import { formatCurrency } from "./formatCurrency";
 
 export type Item = {
@@ -76,7 +76,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderHeaderCell: () => "Adjustments",
     renderCell: (item: Item) => {
-      const style = useDataTableStyles();
+      const style = DataTableStyles();
       return (
         <span
           title={item.adjustment}
@@ -94,7 +94,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderHeaderCell: () => "Recorded",
     renderCell: (item: Item) => {
-      const style = useDataTableStyles();
+      const style = DataTableStyles();
       return (
         <span
           title={item.recorded_amount}
@@ -108,7 +108,7 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const CampaignTable = ({ data }: { data: Item[] }) => {
-  const style = useDataTableStyles();
+  const style = DataTableStyles();
   if (!data) return <div>No data available</div>;
   return (
     <div className={style.dataTable}>

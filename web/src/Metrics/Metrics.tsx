@@ -15,13 +15,21 @@ const useStyles = makeStyles({
   },
 });
 
-export const Metrics = ({
-  data,
-  TileComponent,
-}: {
-  data: any;
-  TileComponent: React.ComponentType<{ data: any }>;
-}) => {
+interface SummaryData {
+  total: number;
+  details: string[];
+}
+
+interface MetricsData {
+  summary: SummaryData;
+}
+
+interface MetricsProps {
+  data: MetricsData;
+  TileComponent: React.ComponentType<{ data: MetricsData }>;
+}
+
+export const Metrics = ({ data, TileComponent }: MetricsProps) => {
   const style = useStyles();
   return (
     <div className={style.container}>
