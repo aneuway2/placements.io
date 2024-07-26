@@ -1,6 +1,6 @@
-FROM node:22-alpine AS build
+FROM aneuway2/placementsio_web:0.0.1 AS build
 
-RUN apk add gcompat
+RUN apk add gcompat nodejs npm yarn
 WORKDIR /web
 COPY . .
 RUN npm install typescript vite --global
